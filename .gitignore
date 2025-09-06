@@ -1,0 +1,104 @@
+# Файлы и папки CMake
+CMakeCache.txt
+CMakeFiles/
+CMakeScripts/
+Testing/
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+CTestTestfile.cmake
+*.cmake
+
+# Папки сборки (build directories)
+build/
+Build/
+out/
+bin/
+binaries/
+
+# Исполняемые файлы и библиотеки
+*.exe
+*.out
+*.app
+*.so
+*.so.*
+*.dylib
+*.dll
+*.a
+*.lib
+
+# Промежуточные объектные файлы
+*.o
+*.obj
+*.lo
+*.la
+*.al
+*.lst
+
+# Резервные копии и временные файлы
+*~
+*.swp
+*.swo
+*.*.swp
+*.*.swo
+*.backup
+*.bak
+*.tmp
+
+# IDE и редакторы
+.vscode/
+.idea/
+*.user
+*.suo
+*.sln
+*.vcxproj*
+*.filters
+*.opensdf
+*.sdf
+*.VC.db
+
+# Автогенерируемые файлы
+autom4te.cache/
+*.m4
+configure
+config.status
+config.log
+libtool
+config.h
+config.h.in
+stamp-h1
+
+# Логи и отчёты
+*.log
+*.tlog
+*.idb
+*.pdb
+*.ilk
+*.map
+*.exp
+
+# Пакеты
+*.deb
+*.rpm
+*.tar.gz
+*.zip
+*.7z
+
+# Тестовые данные
+test_results/
+*.gcda
+*.gcno
+*.gcov
+
+# macOS
+.DS_Store
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+.directory
