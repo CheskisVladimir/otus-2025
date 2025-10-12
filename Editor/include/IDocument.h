@@ -4,7 +4,6 @@
 
 class IDocument
 {
-
 public:
     IDocument(/* args */) = default;
     virtual ~IDocument() = default;
