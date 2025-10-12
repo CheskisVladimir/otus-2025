@@ -12,8 +12,9 @@ jobs:
     steps:
       - uses: DenverCoder1/doxygen-github-pages-action@v2.0.0
         with:
+          working-directory: ./Editor
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
-          folder: doc/html
+          folder: doc/Editor/html
           config_file: Doxyfile
           doxygen_version: 1.9.6
