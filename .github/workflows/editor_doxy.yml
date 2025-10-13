@@ -20,16 +20,24 @@ jobs:
         run: |
           cd Editor
           doxygen Doxyfile
-      - name: Create .nojekyll file
+
+      - name: Create .nojekyll for GitHub Pages
         run: |
-          echo "Disabling Jekyll processing" > ./Editor/docs/html/.nojekyll
-      - name: Deploy to GitHub Pages (auto-create branch)
+          # Create in the exact directory that will be published
+          mkdir -p ./Editor/docs/html
+          echo "" > ./Editor/docs/html/.nojekyll  # Empty file is sufficient
+          
+          # Verify it exists
+          ls -la ./Editor/docs/html/
+          cat ./Editor/docs/html/.nojekyll
+
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./Editor/docs/html
           destination_dir: ${{ github.ref_name }}
           keep_files: true
-          # CRITICAL: This creates gh-pages if missing!
-          create_branch: true 
-          branch: gh-pages  # Explicitly name the branch
+          create_branch: true
+          branch: gh-pages
+          enable_jekyll: false
