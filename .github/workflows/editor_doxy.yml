@@ -2,42 +2,69 @@ name: Deploy Doxygen Docs
 
 on:
   push:
-    branches: [ Editor ]
+    paths:
+      - 'Editor/**'  # Optional: Only trigger on changes in Editor/ (across branches)
 
 jobs:
   deploy:
+    # Only run for branches starting with "Editor" (e.g., Editor, Editor1, Editor2)
+    if: startsWith(github.ref, 'refs/heads/Editor')
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.ref_name }}
+          # Fetch full history for gh-pages deployment (default ref is the triggering branch)
+          fetch-depth: 0
 
       - name: Install Doxygen
-        run: sudo apt-get update && sudo apt-get install -y doxygen
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y doxygen graphviz  # Graphviz optional for diagrams
+
+      - name: Get branch name
+        id: branch
+        run: echo "BRANCH_NAME=${GITHUB_REF#refs/heads/}" >> $GITHUB_OUTPUT
+        # Outputs BRANCH_NAME e.g., "Editor1" for use in paths
 
       - name: Generate Doxygen documentation
+        working-directory: ./Editor
         run: |
-          cd Editor
           doxygen Doxyfile
+          # Assumes output to Editor/docs/html/. Adjust if your HTML_OUTPUT differs.
 
-      - name: Create .nojekyll for GitHub Pages
+      - name: Setup deployment directory
         run: |
-          # Create in the exact directory that will be published
-          mkdir -p ./Editor/docs/html
-          echo "" > ./Editor/docs/html/.nojekyll  # Empty file is sufficient
-          
-          # Verify it exists
-          ls -la ./Editor/docs/html/
-          cat ./Editor/docs/html/.nojekyll
+          # Create deploy root
+          mkdir -p deploy
+          # Add .nojekyll to deploy root (bypasses Jekyll site-wide on gh-pages)
+          touch deploy/.nojekyll
+          echo "Added .nojekyll to bypass Jekyll processing."
+          # Create branch-specific subfolder (e.g., deploy/Editor1)
+          BRANCH_FOLDER="deploy/${{ steps.branch.outputs.BRANCH_NAME }}"
+          mkdir -p "$BRANCH_FOLDER"
+          # Copy generated HTML files into the subfolder
+          cp -r Editor/docs/html/* "$BRANCH_FOLDER/" 2>/dev/null || echo "No HTML files found; check Doxyfile"
+          # Verify index.html exists
+          if [ -f "$BRANCH_FOLDER/index.html" ]; then
+            echo "Docs generated successfully for ${{ steps.branch.outputs.BRANCH_NAME }}."
+          else
+            echo "Error: index.html not found in $BRANCH_FOLDER. Check Doxyfile configuration."
+            exit 1  # Fail if no docs generated
+          fi
 
-      - name: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages (auto-create branch)
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./Editor/docs/html
-          destination_dir: ${{ github.ref_name }}
+          # Publish entire deploy/ (creates subfolders like /Editor1/ on gh-pages root, with .nojekyll)
+          publish_dir: ./deploy
+          # Preserve existing content (e.g., don't delete /Editor2/ when deploying /Editor1/)
           keep_files: true
-          create_branch: true
-          branch: gh-pages
-          enable_jekyll: false
+          # Explicit branch name (auto-creates if missing)
+          publish_branch: gh-pages
+          # Optional: Commit details
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: 'Deploy Doxygen docs for ${{ steps.branch.outputs.BRANCH_NAME }} - {{ github.sha }}'
