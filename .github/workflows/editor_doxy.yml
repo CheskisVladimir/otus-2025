@@ -1,4 +1,4 @@
-name: Docs Editor
+name: Deploy Doxygen Docs
 
 on:
   push:
@@ -7,28 +7,27 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pages: write
-      
     steps:
-      - uses: actions/checkout@v4
-      
-      - name: Generate Doxygen docs
-        uses: DenverCoder1/doxygen-github-pages-action@v2.0.0
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
+      - name: Install Doxygen
+        run: sudo apt-get update && sudo apt-get install -y doxygen
+
+      - name: Generate Doxygen documentation
+        run: |
+          cd Editor
+          doxygen Doxyfile
+
+      - name: Deploy to GitHub Pages (auto-create branch)
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: gh-pages
-          folder: Editor/docs/html
-          config_file: Editor/Doxyfile
-          
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
-        
-      - name: Upload to Pages
-        uses: actions/upload-release-asset@v1
-        with:
-          path: Editor/docs/html
-          
-      - name: Deploy
-        uses: actions/deploy-pages@v2
+          publish_dir: ./Editor/docs/html
+          destination_dir: ${{ github.ref_name }}
+          keep_files: true
+          # CRITICAL: This creates gh-pages if missing!
+          create_branch: true 
+          branch: gh-pages  # Explicitly name the branch
