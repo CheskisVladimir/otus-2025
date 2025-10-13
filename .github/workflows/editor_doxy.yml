@@ -20,7 +20,9 @@ jobs:
         run: |
           cd Editor
           doxygen Doxyfile
-
+      - name: Create .nojekyll file
+        run: |
+          echo "Disabling Jekyll processing" > ./Editor/docs/html/.nojekyll
       - name: Deploy to GitHub Pages (auto-create branch)
         uses: peaceiris/actions-gh-pages@v3
         with:
