@@ -18,9 +18,28 @@ private:
     size_t m_end   = 0;
 };
 
-class Primitive
+class IPrimitive
 {
 public:
-    Primitive() = default;
-    virtual ~Primitive();
+    IPrimitive() = default;
+    virtual ~IPrimitive() {}
+};
+
+class IPrimitive
+{
+public:
+    IPrimitive() = default;
+    virtual ~IPrimitive() {}
+};
+
+class CharacterPrimitive : public IPrimitive
+{
+public:
+    CharacterPrimitive() = default;
+};
+
+class ShapePrimitive : public IPrimitive
+{
+public:
+    ShapePrimitive() = default;
 };

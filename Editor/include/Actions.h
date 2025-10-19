@@ -9,16 +9,27 @@ class IMessage;
 class Selection;
 class Primitive;
 
-/// @brief
+/// @brief Interface for all edit document actions (add/remove primitive, etc)
 class IAction
 {
 public:
     IAction()          = default;
     virtual ~IAction() = default;
 
+    /**
+        \brief Action implementation
+
+        \param [in] message precessed message
+        \param [in, out] context includes current selection, some ather parameters.
+        \param [in, out] document edited document
+
+
+        \return true if something changed, refresh_view required.
+    */
     virtual bool perform(const IMessage& message, EditContext& context, IDocument& document) = 0;
 };
 
+/// @brief Adds a primitive
 class AddPrimitiveAction : public IAction
 {
 public:

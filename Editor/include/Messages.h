@@ -1,7 +1,7 @@
 #pragma once
 #include "std_includes.h"
 
-class Primitive;
+class IPrimitive;
 
 class IMessage
 {
@@ -14,7 +14,7 @@ class AddPrimitiveMessage
 {
 public:
     AddPrimitiveMessage();
-    const Primitive* get_primitive();
+    const IPrimitive* get_primitive();
 };
 
 class RemovePrimitiveMessage

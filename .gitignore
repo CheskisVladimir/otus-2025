@@ -103,5 +103,5 @@ Desktop.ini
 # Linux
 .directory
 
-doc/
+#doc/
 *_cli

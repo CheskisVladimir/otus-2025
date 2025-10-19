@@ -21,6 +21,9 @@ public:
     virtual void load(const ILoader& loader)          = 0;
     virtual void save(const ISaver& saver)            = 0;
     virtual void process_message(const IMessage& msg) = 0;
+
+    virtual EditContext& get_context()             = 0;
+    virtual const EditContext& get_context() const = 0;
 };
 
 class Controller : public IController
@@ -33,6 +36,9 @@ public:
     virtual void load(const ILoader& loader) override;
     virtual void save(const ISaver& saver) override;
     virtual void process_message(const IMessage& msg) override;
+
+    virtual EditContext& get_context() override;
+    virtual const EditContext& get_context() const override;
 
 protected:
     virtual IAction* get_action(const IMessage& message) const = 0;
