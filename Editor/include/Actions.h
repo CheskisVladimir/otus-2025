@@ -30,7 +30,7 @@ private:
     bool get_parameters(const IMessage& message,
                         EditContext& context,
                         const IPrimitive& primitive,
-                        coonst Selection& selection) const;
+                        const Selection& selection) const;
 };
 
 class RemovePrimitiveAction : public IAction
@@ -43,5 +43,5 @@ public:
 private:
     bool get_parameters(const IMessage& message,
                         EditContext& context,
-                        coonst Selection& selection) const;
+                        const Selection& selection) const;
 };

@@ -1,9 +1,15 @@
 #pragma once
+
+#include "Primitives.h"
 #include "std_includes.h"
 
 class EditContext
 {
 public:
     EditContext() = default;
-    size_t selected_primitive_position() const;
+    const Selection& gt_selection() const;
+    Selection& gt_selection();
+
+private:
+    Selection m_selection;
 };
