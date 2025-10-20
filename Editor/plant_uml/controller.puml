@@ -2,9 +2,13 @@
 title Class Diagramm
 
 class IController <<interface>> {
-  + {abstract} get_document() const : const IDocument&
+  + {abstract} get_document() const : const IDocumednt&
   + {abstract}  create_new() : void
-  + {abstract} load(loader: const ILoader& )
-    + {abstract} save(saver: const ILoader& )
+  + {abstract} load(loader: const ILoader& ): void
+  + {abstract} save(saver: const ISaver& ) const :void 
+  + {abstract} process_message(msg: const IMessage& ) const :void 
+  + {abstract} get_context() : EditContext& 
+  + {abstract} get_context() const : const EditContext&
+
 }
 @enduml
