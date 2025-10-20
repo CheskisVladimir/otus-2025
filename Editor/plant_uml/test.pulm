@@ -22,4 +22,22 @@ class Matrix {
 
 Matrix *-- Vector
 
+
+@startuml
+
+class ClassA {
+  - classBRef : shared_ptr<ClassB>
+  + methodA()
+}
+
+class ClassB {
+  - classARef : weak_ptr<ClassA>
+  + methodB()
+}
+
+ClassA --> ClassB : shared_ptr
+ClassB ..> ClassA : weak_ptr
+
+@enduml
+
 @enduml

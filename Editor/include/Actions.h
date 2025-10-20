@@ -44,6 +44,7 @@ private:
                         const Selection& selection) const;
 };
 
+/// @brief Removes selected primitive
 class RemovePrimitiveAction : public IAction
 {
 public:
@@ -55,4 +56,17 @@ private:
     bool get_parameters(const IMessage& message,
                         EditContext& context,
                         const Selection& selection) const;
+};
+
+/// @brief Containes some actions, calls perform for all of them
+class CompositeAction : public IAction
+{
+public:
+    CompositeAction() = default;
+
+    bool perform(const IMessage& message, EditContext& context, IDocument& document) override;
+    void add_action(IAction* action);
+
+private:
+    std::vector<std::unique_ptr<IAction>> m_actions;
 };

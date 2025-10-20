@@ -1,0 +1,10 @@
+@startuml
+title Class Diagramm
+
+class IController <<interface>> {
+  + {abstract} get_document() const : const IDocument&
+  + {abstract}  create_new() : void
+  + {abstract} load(loader: const ILoader& )
+    + {abstract} save(saver: const ILoader& )
+}
+@enduml
