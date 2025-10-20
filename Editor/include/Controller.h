@@ -41,11 +41,10 @@ public:
     virtual const EditContext& get_context() const override;
 
 protected:
-    virtual IAction* get_action(const IMessage& message) const = 0;
-
 private:
+    IAction* get_action(const IMessage& message) const;
     void refresh_view() const;
-    std::unique_ptr<IDocument> m_context;
+    std::unique_ptr<IDocument> m_document;
     std::unique_ptr<EditContext> m_context;
     std::shared_ptr<IView> m_view;
 };

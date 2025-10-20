@@ -15,4 +15,34 @@ ClassB ..> ClassA : weak_ptr
 
 @enduml
 
+@startuml
+
+class ResourceManager {
+  - resource : const unique_ptr<Resource>
+  - sharedConfig : const shared_ptr<const Config>
+  
+  + getResource() const : const Resource&
+  + getConfig() const : const shared_ptr<const Config>&
+  + loadResource(path: const string&) : void
+}
+
+class Resource {
+  - data : vector<char>
+  
+  + getData() const : const vector<char>&
+  + size() const : size_t
+}
+
+class Config {
+  - settings : map<string, string>
+  
+  + getValue(key: const string&) const : const string&
+}
+
+ResourceManager --> Resource : const unique_ptr
+ResourceManager --> Config : const shared_ptr<const>
+
+
+Resource --> Config : createOrder\nвозвращает
 @enduml
+
