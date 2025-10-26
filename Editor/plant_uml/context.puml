@@ -19,8 +19,10 @@ class ShapePrimitive{
 
 class ISelection<<interface>>{} 
 class SimpleSelection{
-  + m_start : size_t
-  + m_end : size_t
+  -m_selection: std::pair<siz_t, sise_t>;
+  +get() const : std::pair<siz_t, sise_t>
+  set(const std::pair<siz_t, sise_t> &) : void
+
 } 
 
 IContext --> IPrimitive

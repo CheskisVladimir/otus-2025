@@ -26,47 +26,37 @@ public:
 
         \return true if something changed, refresh_view required.
     */
-    virtual bool perform(const IMessage& message, EditContext& context, IDocument& document) = 0;
+    virtual bool execute(const IMessage& message, EditContext& context, IDocument& document) = 0;
 };
 
-/// @brief Adds a primitive
-class AddPrimitiveAction : public IAction
+class ILoadAction : public IAction
 {
-public:
-    AddPrimitiveAction() = default;
-
-    bool perform(const IMessage& message, EditContext& context, IDocument& document) override;
-
-private:
-    bool get_parameters(const IMessage& message,
-                        EditContext& context,
-                        const IPrimitive& primitive,
-                        const Selection& selection) const;
+};
+class ISaveAction : public IAction
+{
+};
+class IEditAction : public IAction
+{
 };
 
-/// @brief Removes selected primitive
-class RemovePrimitiveAction : public IAction
+class SaveXMLAction : public ISaveAction
 {
-public:
-    RemovePrimitiveAction() = default;
-
-    bool perform(const IMessage& message, EditContext& context, IDocument& document) override;
-
-private:
-    bool get_parameters(const IMessage& message,
-                        EditContext& context,
-                        const Selection& selection) const;
+};
+class SaveJsonAction : public ISaveAction
+{
 };
 
-/// @brief Containes some actions, calls perform for all of them
-class CompositeAction : public IAction
+class LoadXMLAction : public ILoadAction
 {
-public:
-    CompositeAction() = default;
+};
+class LoadJsonAction : public ILoadAction
+{
+};
 
-    bool perform(const IMessage& message, EditContext& context, IDocument& document) override;
-    void add_action(IAction* action);
+class AddPrimitiveAction : IEditAction
+{
+};
 
-private:
-    std::vector<std::unique_ptr<IAction>> m_actions;
+class DelPrimitiveAction : public IEditAction
+{
 };
