@@ -12,6 +12,7 @@
 class IPrimitive;
 class ISelection;
 
+/// @brief Current context
 class IContext
 {
 public:
@@ -23,6 +24,7 @@ public:
     virtual void set_primitive(const IPrimitive&);
 };
 
+/// @brief IPrimitive is a part of the document
 class IPrimitive
 {
 public:
@@ -30,18 +32,21 @@ public:
     virtual ~IPrimitive() {}
 };
 
+/// @brief Simple character
 class CharPrimitive : public IPrimitive
 {
 public:
     CharacterPrimitive() = default;
 };
 
+/// @brief Rect, ellipse...
 class ShapePrimitive : public IPrimitive
 {
 public:
     ShapePrimitive() = default;
 };
 
+/// @brief Selected part of the document
 class ISelection
 {
 public:
@@ -49,6 +54,7 @@ public:
     virtual ~ISelection() = default;
 };
 
+/// @brief Simple selection - start and end of selected part
 class SimpleSelection
 {
 public:
