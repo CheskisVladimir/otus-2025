@@ -11,6 +11,7 @@ class IController;
 class ISaver;
 class ILoader;
 
+/// @brief It's a View in MVC model.
 class IView
 {
 public:
