@@ -2,9 +2,7 @@
 
 #include "std_includes.h"
 
-class Selection;
-class IPrimitive;
-
+/// @brief It's a Model in MVC model
 class IDocument
 {
 public:

@@ -2,24 +2,10 @@
 
 #include "std_includes.h"
 
-class IPrimitive;
-
+/// @brief It containes the command to be procesed
 class IMessage
 {
 public:
     IMessage()          = default;
     virtual ~IMessage() = default;
-};
-
-class AddPrimitiveMessage
-{
-public:
-    AddPrimitiveMessage();
-    const IPrimitive* get_primitive();
-};
-
-class RemovePrimitiveMessage
-{
-public:
-    RemovePrimitiveMessage() = default;
 };

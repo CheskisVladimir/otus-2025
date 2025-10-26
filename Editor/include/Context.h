@@ -1,3 +1,9 @@
+/**
+ * @file Context.h
+ * @brief Current context it includes the selection in the document, primitive to be inserted, etc.
+ * @date 2025-10-25
+ * @version 1.0
+ */
 #pragma once
 
 #include "Primitives.h"

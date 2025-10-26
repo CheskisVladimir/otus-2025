@@ -17,10 +17,8 @@ public:
     IView()          = default;
     virtual ~IView() = default;
 
-    void set_controller(std::weak_ptr<IController> controller);
-    virtual void show() const = 0;
+    void set_controller(std::weak_ptr<IController> controller) = 0;
+    virtual void show(const IDocument&)                        = 0;
 
-    virtual void notify_сontroller(const IMessage& msg) const           = 0;
-    virtual void notify_сontroller_saving(const ISaver& saver) const    = 0;
-    virtual void notify_сontroller_loading(const ILoader& loader) const = 0;
+    virtual void notify_сontroller(const IMessage& msg) const = 0;
 };
