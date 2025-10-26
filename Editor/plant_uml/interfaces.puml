@@ -1,0 +1,34 @@
+@startuml
+title Interfaces
+class IController <<interface>> {
+  + {abstract} get_document() const : const IDocumednt&
+  + {abstract} process_message(msg: const IMessage& ) const :void 
+ }
+
+class IView<<interface>>{
+  + {abstract} show (document: const IDocument &document) const : void
+  + {abstract} notify_сontroller(msg: const IMessage& ) const :void 
+}
+class IDocument <<interface>>{}
+class IMessage<<interface>>{} 
+class IContext <<interface>>{}
+
+class IAction<<interface>>
+{
+      + applyMessageToDocument(
+    message: const IMessage&,
+    context: IContext&,
+    document: IDocument&
+  ) : void
+} 
+
+IMessage ..> IAction : input
+IAction ..> IContext : input/output
+IAction ..> IDocument : input/output
+
+IView ..> IMessage : notify
+IView ..> IDocument : show
+IMessage ..> IController : process
+IController ..> IDocument : containes
+
+@enduml
