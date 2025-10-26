@@ -5,7 +5,7 @@ title Controler
 class IController <<interface>> {
 }
 
-class Controller {
+class Controller #LightGreen {
   - m_document : unique_ptr<IDocument>
   - m_context : unique_ptr<EditContext>
   - m_view : shared_ptr<IDocument>
@@ -32,7 +32,7 @@ class IAction <<interface>> {
 
 Controller --> IView : shared_ptr
 IView ..> Controller : weak_ptr
-IController <|-- Controller
+IController <|.. Controller
 Controller -> IDocument : unique_ptr
 Controller -> IContext : unique_ptr
 Controller ..> IAction : Maps the IMessage to an IAction 

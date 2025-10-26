@@ -6,8 +6,8 @@ class IController <<interface>> {
  }
 
 class IView<<interface>>{
-  + {abstract} show (document: const IDocument &document) const : void
-  + {abstract} notify_сontroller(msg: const IMessage& ) const :void 
+  + {abstract} show (const IDocument &) const : void
+  + {abstract} notify_сontroller(const IMessage& ) const :void 
 }
 class IDocument <<interface>>{}
 class IMessage<<interface>>{} 
@@ -15,8 +15,7 @@ class IContext <<interface>>{}
 
 class IAction<<interface>>
 {
-      + execute (message: const IMessage&, context: IContext&, document: IDocument&
-  ) : void
+   + execute (const IMessage&, IContext&, IDocument&) : void
 } 
 
 

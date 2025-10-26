@@ -1,5 +1,7 @@
 @startuml
 class IAction <<interface>> {
+   + execute (const IMessage&, IContext&, IDocument&) : void
+
 }
 
 class ILoadAction <<abstract>> {
@@ -20,9 +22,9 @@ class LoadJsonAction{}
 class AddPrimitiveAction{}
 class DelPrimitiveAction{}
 
-IAction <|-- ILoadAction
-IAction <|-- ISaveAction
-IAction <|-- IEditAction
+IAction <|.. ILoadAction
+IAction <|.. ISaveAction
+IAction <|.. IEditAction
 
 ISaveAction <|-- SaveXMLAction
 ISaveAction <|-- SaveJsonAction

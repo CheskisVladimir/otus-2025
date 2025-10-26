@@ -1,7 +1,34 @@
 @startuml
 
+class IContext<<interface>>{
+  + {abstract} get_selection() const : const ISelection&;
+  + {abstract} set_selection(const ISelection&): void;   
+  
+  + {abstract} get_primitive() const :const IPrimitive&    
+  + {abstract} set_primitive(const IPrimitive&) :void    
+} 
 
-IContext ..-> IPrimitive
-IContext ..> ISelection
+class IPrimitive<<interface>>{
+} 
+
+class CharPrimitive{
+} 
+
+class ShapePrimitive{
+} 
+
+class ISelection<<interface>>{} 
+class SimpleSelection{
+  + m_start : size_t
+  + m_end : size_t
+} 
+
+IContext --> IPrimitive
+IContext --> ISelection
+
+IPrimitive <|-- CharPrimitive
+IPrimitive <|-- ShapePrimitive
+
+ISelection <|-- SimpleSelection
 
 @enduml
