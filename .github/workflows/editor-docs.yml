@@ -1,49 +1,30 @@
-name: Deploy Editor Documentation
+name: Deploy Docs
 
 on:
   push:
     branches: [ Editor ]
-    paths: [ 'Editor/**' ]
 
 jobs:
-  build-and-deploy:
+  deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-      pages: write
-      id-token: write
-    
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          
+      - uses: actions/checkout@v4
+      
       - name: Setup Pages
         uses: actions/configure-pages@v3
-        
-      - name: Install Doxygen
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y doxygen graphviz
+        with:
+          enable: true  # Явно включаем Pages
           
-      - name: Generate Documentation
-        working-directory: ./Editor
+      - name: Build docs
         run: |
-          doxygen Doxyfile
-          # Создаем .nojekyll для правильного отображения
+          sudo apt install doxygen graphviz
+          cd Editor && doxygen Doxyfile
           touch docs/html/.nojekyll
           
-      - name: Create deployment structure
-        run: |
-          mkdir -p _site/editor
-          cp -r Editor/docs/html/* _site/editor/
-          
-      - name: Upload artifact
+      - name: Upload and deploy
         uses: actions/upload-pages-artifact@v3
         with:
-          path: _site
+          path: Editor/docs/html
           
-      - name: Deploy to GitHub Pages
-        id: deployment
+      - name: Deploy
         uses: actions/deploy-pages@v2
