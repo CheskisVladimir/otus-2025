@@ -1,15 +1,15 @@
 @startuml
-title Interfaces
-class IController <<interface>> {
+title Interfaces: IDocument is a Model, IView and IController - View and Controller in MVC
+class IController <<interface>> #LightGreen {
   + {abstract} get_document() const : const IDocumednt&
   + {abstract} process_message(msg: const IMessage& ) const :void 
  }
 
-class IView<<interface>>{
+class IView<<interface>> #LightGreen {
   + {abstract} show (const IDocument &) const : void
   + {abstract} notify_сontroller(const IMessage& ) const :void 
 }
-class IDocument <<interface>>{}
+class IDocument <<interface>> #LightGreen {}
 class IMessage<<interface>>{} 
 class IContext <<interface>>{}
 
