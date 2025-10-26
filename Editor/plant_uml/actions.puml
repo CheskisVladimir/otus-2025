@@ -1,0 +1,36 @@
+@startuml
+class IAction <<interface>> {
+}
+
+class ILoadAction <<abstract>> {
+}
+
+class ISaveAction <<abstract>> {
+}
+
+class IEditAction <<abstract>> {
+}
+
+class SaveXMLAction{}
+class SaveJsonAction{}
+
+class LoadXMLAction{}
+class LoadJsonAction{}
+
+class AddPrimitiveAction{}
+class DelPrimitiveAction{}
+
+IAction <|-- ILoadAction
+IAction <|-- ISaveAction
+IAction <|-- IEditAction
+
+ISaveAction <|-- SaveXMLAction
+ISaveAction <|-- SaveJsonAction
+
+ILoadAction <|-- LoadXMLAction
+ILoadAction <|-- LoadJsonAction
+
+IEditAction <|-- AddPrimitiveAction
+IEditAction <|-- DelPrimitiveAction
+
+@enduml

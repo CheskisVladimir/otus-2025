@@ -1,24 +1,14 @@
 @startuml
-title Class Diagramm
+
+title Controler
 
 class IController <<interface>> {
-  + {abstract} get_document() const : const IDocumednt&
-  + {abstract}  create_new() : void
-  + {abstract} load(loader: const ILoader& ): void
-  + {abstract} save(saver: const ISaver& ) const :void 
-  + {abstract} process_message(msg: const IMessage& ) const :void 
-  + {abstract} get_context() : EditContext& 
-  + {abstract} get_context() const : const EditContext&
 }
 
 class Controller {
   - m_document : unique_ptr<IDocument>
   - m_context : unique_ptr<EditContext>
   - m_view : shared_ptr<IDocument>
-
-  - refresh_view() const void
-  - get_action(msg: const IMessage&) const : IAction*
-
 }
 
 class IView <<interface>> {
@@ -29,7 +19,7 @@ class IDocument <<interface>> {
  
 }
 
-class EditContext <<interface>> {
+class IContext <<interface>> {
  
 }
 
@@ -37,26 +27,24 @@ class IAction <<interface>> {
  
 }
 
-class IMessage <<interface>> {
- 
-}
+
+
 
 Controller --> IView : shared_ptr
 IView ..> Controller : weak_ptr
 IController <|-- Controller
 Controller -> IDocument : unique_ptr
-Controller -> EditContext : unique_ptr
-Controller --> IAction : get_action\returns
+Controller -> IContext : unique_ptr
+Controller ..> IAction : Maps the IMessage to an IAction 
 
-class AddPrimitiveAction {}
-class RemovePrimitiveAction {}
-class CompositeAction {}
+'class AddPrimitiveAction {}
+'class RemovePrimitiveAction {}
+'class CompositeAction {}
 
-IAction <|-- AddPrimitiveAction
-IAction <|-- RemovePrimitiveAction
-IAction <|-- CompositeAction
+'IAction <|-- AddPrimitiveAction
+'IAction <|-- RemovePrimitiveAction
+'IAction <|-- CompositeAction
 
-IAction --> IDocument : edits
 
 
 @enduml

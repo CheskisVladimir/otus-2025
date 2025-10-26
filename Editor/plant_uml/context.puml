@@ -1,0 +1,7 @@
+@startuml
+
+
+IContext ..-> IPrimitive
+IContext ..> ISelection
+
+@enduml

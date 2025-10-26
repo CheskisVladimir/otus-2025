@@ -15,20 +15,19 @@ class IContext <<interface>>{}
 
 class IAction<<interface>>
 {
-      + applyMessageToDocument(
-    message: const IMessage&,
-    context: IContext&,
-    document: IDocument&
+      + execute (message: const IMessage&, context: IContext&, document: IDocument&
   ) : void
 } 
 
-IMessage ..> IAction : input
-IAction ..> IContext : input/output
-IAction ..> IDocument : input/output
 
-IView ..> IMessage : notify
-IView ..> IDocument : show
-IMessage ..> IController : process
-IController ..> IDocument : containes
+IMessage <.. IAction : Input
+IAction <..> IContext : Input/Output
+IAction <..> IDocument : Input/Output
+
+IView ..> IMessage : Notify Controller
+IView ..> IDocument : Show
+IController ..> IMessage : Process
+IController ..> IDocument : Containes
+
 
 @enduml
