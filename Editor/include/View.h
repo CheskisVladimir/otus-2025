@@ -19,7 +19,10 @@ public:
     virtual ~IView() = default;
 
     void set_controller(std::weak_ptr<IController> controller) = 0;
-    virtual void show(const IDocument&)                        = 0;
 
+    /// @brief Shows the Document
+    virtual void show(const IDocument&) = 0;
+
+    /// @brief Send user interface messages to the controller
     virtual void notify_сontroller(const IMessage& msg) const = 0;
 };
