@@ -19,6 +19,6 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
-          folder: Editor/docs/html  # ← ДОБАВЬТЕ Editor/
-          config_file: Editor/Doxyfile  # ← ДОБАВЬТЕ Editor/
+          folder: Editor/docs/html
+          config_file: Editor/Doxyfile
           doxygen_version: 1.9.6
