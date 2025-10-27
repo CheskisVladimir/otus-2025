@@ -1,3 +1,5 @@
+/// @brief Containes all include files (all code should be in one file)
+
 #pragma once
 #include "Actions.h"
 #include "Context.h"
