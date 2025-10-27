@@ -2670,3 +2670,5 @@ HIDE_UNDOC_MEMBERS = YES
 HTML_OUTPUT            = html
 GENERATE_TREEVIEW      = YES
 DISABLE_INDEX          = NO
+
+HTML_BASE              = /otus-2025/editor/
