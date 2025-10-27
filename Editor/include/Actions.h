@@ -3,6 +3,11 @@
  * @brief Edit document actions (save/load, add/remove primitive, etc)
  * @date 2025-10-25
  * @version 1.0
+ *
+ * @see Messages.h
+ * @see View.h
+ * @see Document.h
+ * @see Context.h
  */
 
 #pragma once
