@@ -9,16 +9,13 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - uses: actions/checkout@v4
       
-      - name: Generate Doxygen docs
-        uses: DenverCoder1/doxygen-github-pages-action@v2.0.0
+      - name: Generate and deploy Doxygen docs
+        uses: mattnotmitt/doxygen-action@v1.9.8
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: gh-pages
-          folder: Editor/docs/html
-          config_file: Editor/Doxyfile
-          doxygen_version: 1.9.6
+          working-directory: Editor
+          doxygen-version: 1.9.6
+          deploy-branch: gh-pages
+          deploy-folder: docs
