@@ -50,9 +50,7 @@ public:
 
     /// @brief Sends user interface messages to the controller
     /**
-     * @brief Message processing
      * @code
-     * \param [in] msg message
      * void notify_сontroller(const IMessage& msg) {
      *    auto controller = m_controller.lock();
      *    if (controller == nullptr){

@@ -110,10 +110,8 @@ void Controller::refresh_view() const { m_view->show(*m_document); }
 
 void View::set_controller(std::weak_ptr<IController> controller) { m_controller = controller; }
 
-/// @brief Shows the Document
 void View::show(const IDocument &) {}
 
-/// @brief Send user interface messages to the controller
 void View::notify_сontroller(const IMessage &msg) const
 {
 	auto controller = m_controller.lock();
