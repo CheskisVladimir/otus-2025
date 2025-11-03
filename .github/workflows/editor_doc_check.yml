@@ -1,0 +1,30 @@
+name: Deploy Editor Docs
+
+on:
+  push:
+    branches: [ Editor ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Install Doxygen
+        run: sudo apt-get install -y doxygen graphviz
+        
+      - name: Generate documentation
+        run: |
+          cd Editor
+          echo "=== Generating docs ==="
+          doxygen Doxyfile
+          echo "=== Checking result ==="
+          ls -la docs/html/ || echo "No docs generated!"
+          
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./Editor/docs/html
+          force_orphan: true
