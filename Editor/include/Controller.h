@@ -25,8 +25,8 @@ class IController : public std::enable_shared_from_this<IController>
 private:
     /* data */
 public:
-    IController(/* args */);
-    virtual ~IController() = default;
+    IController(/* args */) = default;
+    virtual ~IController()  = default;
 
     virtual const IDocument& get_document() const     = 0;
     virtual void process_message(const IMessage& msg) = 0;
@@ -36,6 +36,10 @@ public:
 class Controller : public IController
 {
 public:
+    /**
+     * Creates document, view and controller\n
+     * Calls m_view->set_controller(weak_from_this());
+     */
     Controller();
 
     /**
@@ -51,10 +55,10 @@ public:
      * }
      * @endcode
      */
-    virtual void process_message(const IMessage& msg) override;
+    void process_message(const IMessage& msg) override;
 
     /// @brief Returns *m_document
-    virtual const IDocument& get_document() const override;
+    const IDocument& get_document() const override;
 
 protected:
     virtual IAction* get_action(const IMessage& message) const;
@@ -70,5 +74,5 @@ private:
 
     /// @brief Context
     /// @see Context.h
-    std::unique_ptr<EditContext> m_context;
+    std::unique_ptr<IContext> m_context;
 };

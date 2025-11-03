@@ -3,11 +3,9 @@
  * @brief Current context it includes the selection in the document, primitive to be inserted, etc.
  * @date 2025-10-25
  * @version 1.0
- * @see Primitives.h
  */
 #pragma once
 
-#include "Primitives.h"
 #include "std_includes.h"
 
 class IPrimitive;
@@ -37,14 +35,22 @@ public:
 class CharPrimitive : public IPrimitive
 {
 public:
-    CharacterPrimitive() = default;
+    CharPrimitive(char ch);
+    char get_value() const;
+
+private:
+    char m_char;
 };
 
 /// @brief Rect, ellipse...
 class ShapePrimitive : public IPrimitive
 {
 public:
-    ShapePrimitive() = default;
+    ShapePrimitive(const std::string& shape_type);
+    const std::string& get_type() const;
+
+private:
+    std::string m_type;
 };
 
 /// @brief Selected part of the document

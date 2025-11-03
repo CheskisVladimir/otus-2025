@@ -9,8 +9,5 @@
 #include "Context.h"
 #include "Controller.h"
 #include "Document.h"
-#include "Loaders.h"
 #include "Messages.h"
-#include "Primitives.h"
-#include "Savers.h"
 #include "View.h"

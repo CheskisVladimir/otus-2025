@@ -14,12 +14,12 @@
 
 #include "std_includes.h"
 
-class EditContext;
+class IContext;
 class IDocument;
 class IMessage;
 
-class Selection;
-class Primitive;
+class ISelection;
+class IPrimitive;
 
 /// @brief Interface for all edit document actions (save/load, add/remove primitive, etc)
 class IAction
@@ -39,7 +39,7 @@ public:
 
         \return true if something changed, refresh_view required.
     */
-    virtual bool execute(const IMessage& message, EditContext& context, IDocument& document) = 0;
+    virtual bool execute(const IMessage& message, IContext& context, IDocument& document) = 0;
 };
 
 /// @brief Base class for the loading actions
@@ -60,30 +60,54 @@ class IEditAction : public IAction
 /// @brief Saves a document to the XML file
 class SaveXMLAction : public ISaveAction
 {
+public:
+    SaveXMLAction() = default;
+    /// @brief Saves a document to the XML file
+    bool execute(const IMessage& message, IContext& context, IDocument& document) override;
 };
 
 /// @brief Saves a document to the json file
 class SaveJsonAction : public ISaveAction
 {
+public:
+    SaveJsonAction() = default;
+    /// @brief Saves a document to the json file
+    bool execute(const IMessage& message, IContext& context, IDocument& document) override;
 };
 
 /// @brief Loads a document from the XML file
 class LoadXMLAction : public ILoadAction
 {
+public:
+    LoadXMLAction() = default;
+    /// @brief Loads a document from the XML file
+    bool execute(const IMessage& message, IContext& context, IDocument& document) override;
 };
 
 /// @brief Loads a document from the json file
 class LoadJsonAction : public ILoadAction
 {
+public:
+    LoadJsonAction() = default;
+    /// @brief Loads a document from the json file
+    bool execute(const IMessage& message, IContext& context, IDocument& document) override;
 };
 
 /// @brief Takes from IContext current ISelection and IPrimitive, adds the primitive at the selected
 /// position
 class AddPrimitiveAction : IEditAction
 {
+public:
+    AddPrimitiveAction() = default;
+    /// @brief Adds primitive
+    bool execute(const IMessage& message, IContext& context, IDocument& document) override;
 };
 
 /// @brief Takes from IContext current ISelection , removes the primitive at the selected position
 class DelPrimitiveAction : public IEditAction
 {
+public:
+    DelPrimitiveAction() = default;
+    /// @brief Deletes primitive
+    bool execute(const IMessage& message, IContext& context, IDocument& document) override;
 };

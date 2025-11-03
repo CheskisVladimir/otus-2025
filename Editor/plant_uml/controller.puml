@@ -14,6 +14,9 @@ class Controller #LightGreen {
 class IView <<interface>> {
  
 }
+class IView <<interface>> {
+ 
+}
 
 class IDocument <<interface>> {
  
@@ -36,6 +39,7 @@ IController <|.. Controller
 Controller -> IDocument : unique_ptr
 Controller -> IContext : unique_ptr
 Controller ..> IAction : Maps the IMessage to an IAction 
+IView <|.. View
 
 'class AddPrimitiveAction {}
 'class RemovePrimitiveAction {}

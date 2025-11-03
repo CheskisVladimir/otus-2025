@@ -7,11 +7,6 @@
 #include <iostream>
 #include "include/all_Includes.h"
 
-/*!
-	\brief  Не неёт никакой смысловой нагрузки
-
-*/
-/// Краткое описание
 int main(int, char **)
 {
 	std::cout << "Version: " << version() << std::endl;
@@ -21,41 +16,110 @@ int main(int, char **)
 	return 0;
 }
 
-Editor::Editor(std::unique_ptr<IVewer> &&viewer, std::unique_ptr<IController> &&controller)
-{
-	m_controller = std::move(controller);
-	m_viewer = std::move(viewer);
-	m_current_document = std::make_unique<EmptyDocument>();
-}
-
-size_t EditContext::selected_primitive_position() const { return 0; }
-
-bool AddPrimitiveAction::perform(const IMessage &, EditContext &, IDocument &) const
+// Actions
+bool SaveXMLAction::execute(const IMessage &, IContext &, IDocument &)
 {
 	return true;
 }
 
-bool RemovePrimitiveAction::perform(const IMessage &, EditContext &, IDocument &) const
+bool SaveJsonAction::execute(const IMessage &, IContext &, IDocument &)
 {
 	return true;
 }
 
-ControllerWithActions::ControllerWithActions()
+bool LoadXMLAction::execute(const IMessage &, IContext &, IDocument &)
 {
-	m_context = std::make_unique<EditContext>();
+	return true;
 }
 
-/**
-	Processes a message
-	\param[in] message message
-	\param[out] document document
-	\return returns true, if the document was changed
-*/
-
-bool ControllerWithActions::process_message(const IMessage &message, IDocument &document)
+bool LoadJsonAction::execute(const IMessage &, IContext &, IDocument &)
 {
-	auto *action = get_action(message);
+	return true;
+}
+
+bool AddPrimitiveAction::execute(const IMessage &, IContext &, IDocument &)
+{
+	return true;
+}
+
+bool DelPrimitiveAction::execute(const IMessage &, IContext &, IDocument &)
+{
+	return true;
+}
+
+//------------------
+
+CharPrimitive::CharPrimitive(char ch)
+{
+	m_char = ch;
+}
+
+char CharPrimitive::get_value() const
+{
+	return m_char;
+}
+
+ShapePrimitive::ShapePrimitive(const std::string &shape_type)
+{
+	m_type = shape_type;
+}
+
+const std::string &ShapePrimitive::get_type() const
+{
+	return m_type;
+}
+
+std::pair<size_t, size_t> SimpleSelection::get() const
+{
+	return m_selection;
+}
+
+void SimpleSelection::set(const std::pair<size_t, size_t> &pos) { m_selection = pos; }
+
+///   Controller
+
+Controller::Controller() : IController()
+{
+	// m_document = create doc
+	// m_vew = create view
+	m_view->set_controller(weak_from_this());
+	// m_context = create_context
+}
+
+void Controller::process_message(const IMessage &msg)
+{
+	auto *action = get_action(msg);
 	if (action == nullptr)
-		return false;
-	return action->perform(message, *m_context, document);
+	{
+		// DO SOMETHING
+		if (action->execute(msg, *m_context, *m_document))
+			refresh_view();
+	}
+}
+
+const IDocument &Controller::get_document() const { return *m_document; }
+
+IAction *Controller::get_action(const IMessage &) const
+{
+	return nullptr;
+}
+
+void Controller::refresh_view() const { m_view->show(*m_document); }
+
+/// View
+
+void View::set_controller(std::weak_ptr<IController> controller) { m_controller = controller; }
+
+/// @brief Shows the Document
+void View::show(const IDocument &) {}
+
+/// @brief Send user interface messages to the controller
+void View::notify_сontroller(const IMessage &msg) const
+{
+	auto controller = m_controller.lock();
+	if (controller == nullptr)
+	{
+		// DO SOMETHING
+	}
+	controller->process_message(msg);
 }
