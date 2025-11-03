@@ -1,0 +1,22 @@
+name: Deploy Editor Docs
+
+on:
+  push:
+    branches: [ Editor ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Generate Doxygen docs
+        uses: DenverCoder1/doxygen-github-pages-action@v2.0.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          folder: Editor/docs/html
+          config_file: Editor/Doxyfile
