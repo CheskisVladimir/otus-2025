@@ -92,9 +92,9 @@ void Controller::process_message(const IMessage &msg)
 	if (action == nullptr)
 	{
 		// DO SOMETHING
-		if (action->execute(msg, *m_context, *m_document))
-			refresh_view();
 	}
+	if (action->execute(msg, *m_context, *m_document))
+		refresh_view();
 }
 
 const IDocument &Controller::get_document() const { return *m_document; }
