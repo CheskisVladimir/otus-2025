@@ -37,6 +37,12 @@ jobs:
         working-directory: ./Hello
         run: cmake --build . --target package
       
+      - name: Upload build artifacts to Hello folder
+        uses: actions/upload-artifact@v3
+        with:
+          name: hello-packages
+          path: Hello/helloworld-0.0.${{ github.run_number }}-Linux.deb
+      
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
