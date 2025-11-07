@@ -42,19 +42,34 @@ public:
     virtual bool execute(const IMessage& message, IContext& context, IDocument& document) = 0;
 };
 
+/// @brief Creates new document
+class CreateDocumentAction : public IAction
+{
+public:
+    CreateDocumentAction() = default;
+    /// @brief Creates new document
+    bool execute(const IMessage& message, IContext& context, IDocument& document) override;
+};
+
 /// @brief Base class for the loading actions
 class ILoadAction : public IAction
 {
+public:
+    ILoadAction() = default;
 };
 
 /// @brief Base class for the save document actions
 class ISaveAction : public IAction
 {
+public:
+    ISaveAction() = default;
 };
 
 /// @brief Base class for the edit document actions
 class IEditAction : public IAction
 {
+public:
+    IEditAction() = default;
 };
 
 /// @brief Saves a document to the XML file

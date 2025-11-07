@@ -13,6 +13,8 @@ class ISaveAction <<abstract>> {
 class IEditAction <<abstract>> {
 }
 
+class CreateDocumentAction{}
+
 class SaveXMLAction{}
 class SaveJsonAction{}
 
@@ -22,9 +24,12 @@ class LoadJsonAction{}
 class AddPrimitiveAction{}
 class DelPrimitiveAction{}
 
+
 IAction <|.. ILoadAction
 IAction <|.. ISaveAction
 IAction <|.. IEditAction
+IAction <|.. CreateDocumentAction
+
 
 ISaveAction <|-- SaveXMLAction
 ISaveAction <|-- SaveJsonAction

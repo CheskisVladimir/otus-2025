@@ -17,6 +17,11 @@ int main(int, char **)
 }
 
 // Actions
+bool CreateDocumentAction::execute(const IMessage &, IContext &, IDocument &)
+{
+	return true;
+}
+
 bool SaveXMLAction::execute(const IMessage &, IContext &, IDocument &)
 {
 	return true;
