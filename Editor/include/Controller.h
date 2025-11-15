@@ -45,17 +45,18 @@ public:
     /**
      * @brief Message processing
      * @code
-     * void process_message(const IMessage& msg) {
+     * bool process_message(const IMessage& msg) {
      *    auto *action = get_action(msg);
      *    if (action == nullptr){
-     *      //DO SOMETHING
+     *      return false;
      *    }
      *    if (action->execute(msg, *m_context, *m_document))
      *      refresh_view();
+     *    return true;
      * }
      * @endcode
      */
-    void process_message(const IMessage& msg) override;
+    bool process_message(const IMessage& msg) override;
 
     /// @brief Returns *m_document
     const IDocument& get_document() const override;
