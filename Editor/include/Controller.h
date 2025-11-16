@@ -8,6 +8,7 @@
  * @see View.h
  * @see Document.h
  * @see Context.h
+ * @see Factory.h
  */
 #pragma once
 
@@ -20,7 +21,7 @@ class IView;
 class IAction;
 class IActionFactory;
 
-/// @brief It's an interface of Controller in MVC model
+/// @brief Interface of Controller in MVC model
 class IController : public std::enable_shared_from_this<IController>
 {
 private:
@@ -31,9 +32,13 @@ public:
 
     virtual const IDocument& get_document() const     = 0;
     virtual bool process_message(const IMessage& msg) = 0;
+
+    /// @brief Returns Vew
+    virtual IView& get_view()             = 0;
+    virtual const IView& get_view() const = 0;
 };
 
-/// @brief IController Implementation
+/// @brief Controller in MVC model
 class Controller : public IController
 {
 public:
@@ -62,7 +67,12 @@ public:
     /// @brief Returns *m_document
     const IDocument& get_document() const override;
 
+    /// @brief Creates actions for all message types
     void init_actions(const IActionFactory& factory);
+
+    /// @brief Returns Vew
+    IView& get_view() override;
+    const IView& get_view() const override;
 
 protected:
     /// @brief Finds the action, processed this messages
@@ -81,5 +91,7 @@ private:
     /// @see Context.h
     std::unique_ptr<IContext> m_context;
 
+    /// @brief Actions
+    /// @see Actions.h
     std::array<std::unique_ptr<IAction>, size_t(IMessage::Type::COUNT)> m_actions;
 };

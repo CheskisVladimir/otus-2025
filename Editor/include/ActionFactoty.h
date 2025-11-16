@@ -1,12 +1,5 @@
-/**
- * @file ActionFactory.h
- * @brief Creates editor actions (save/load, add/remove primitive, etc)
- * @date 2025-10-25
- * @version 1.0
- *
- * @see Messages.h
- * @see Actions.h
- */
+/// \file ActionFactoty.h
+/// \brief Creates editor actions (save/load, add/remove primitive, etc)
 
 #pragma once
 #include "Messages.h"
@@ -14,6 +7,7 @@
 class IAction;
 
 /// @brief Action factory interface
+/// @brief Creates editor actions (save/load, add/remove primitive, etc)
 class IActionFactory
 {
 public:
@@ -24,7 +18,7 @@ public:
     virtual std::unique_ptr<IAction> create(IMessage::Type msg_type) const = 0;
 };
 
-/// @brief Action factory implementation
+/// @brief Creates editor actions (save/load, add/remove primitive, etc)
 class ActionFactory : public IActionFactory
 {
 public:

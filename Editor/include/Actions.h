@@ -108,21 +108,21 @@ public:
     bool execute(const IMessage& message, IContext& context, IDocument& document) override;
 };
 
-/// @brief Takes from IContext current ISelection and IPrimitive, adds the primitive at the selected
+/// @brief Takes from IContext current selection and IPrimitive, adds the primitive at the selected
 /// position
 class AddPrimitiveAction : IEditAction
 {
 public:
     AddPrimitiveAction() = default;
-    /// @brief Adds primitive
+    /// @brief Adds primitive, changes selection
     bool execute(const IMessage& message, IContext& context, IDocument& document) override;
 };
 
-/// @brief Takes from IContext current ISelection , removes the primitive at the selected position
+/// @brief Takes from IContext current selection, removes the primitive at the selected position
 class DelPrimitiveAction : public IEditAction
 {
 public:
     DelPrimitiveAction() = default;
-    /// @brief Deletes primitive
+    /// @brief Deletes primitive, changes selection
     bool execute(const IMessage& message, IContext& context, IDocument& document) override;
 };

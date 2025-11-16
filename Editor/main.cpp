@@ -1,6 +1,5 @@
-/**
- * @brief Provides stuff for my great program.
- */
+/// \file main.cpp
+/// \brief Function implementations
 
 #include "lib.h"
 
@@ -9,9 +8,14 @@
 
 int main(int, char **)
 {
-	std::cout << "Version: " << version() << std::endl;
-	std::cout << "It's Editor" << std::endl;
-	std::cout << "i'm" << std::endl;
+	std::cout << "Editor  " << version() << std::endl;
+
+	Controller controller;
+	ActionFactory factory;
+	controller.init_actions(factory);
+	auto &view = controller.get_view();
+	Message create(IMessage::Type::create);
+	view.notify_сontroller(create);
 
 	return 0;
 }
@@ -58,6 +62,9 @@ void Controller::init_actions(const IActionFactory &factory)
 }
 
 void Controller::refresh_view() const { m_view->show(*m_document); }
+
+IView &Controller::get_view() { return *m_view; }
+const IView &Controller::get_view() const { return *m_view; }
 
 /// View
 
