@@ -15,3 +15,9 @@ public:
     IDocument()          = default;
     virtual ~IDocument() = default;
 };
+
+class Document : public IDocument
+{
+public:
+    Document() = default;
+};

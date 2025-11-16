@@ -11,13 +11,14 @@
  */
 #pragma once
 
+#include "Messages.h"
 #include "std_includes.h"
 
 class IContext;
 class IDocument;
 class IView;
 class IAction;
-class IMessage;
+class IActionFactory;
 
 /// @brief It's an interface of Controller in MVC model
 class IController : public std::enable_shared_from_this<IController>
@@ -29,7 +30,7 @@ public:
     virtual ~IController()  = default;
 
     virtual const IDocument& get_document() const     = 0;
-    virtual void process_message(const IMessage& msg) = 0;
+    virtual bool process_message(const IMessage& msg) = 0;
 };
 
 /// @brief IController Implementation
@@ -61,7 +62,10 @@ public:
     /// @brief Returns *m_document
     const IDocument& get_document() const override;
 
+    void init_actions(const IActionFactory& factory);
+
 protected:
+    /// @brief Finds the action, processed this messages
     virtual IAction* get_action(const IMessage& message) const;
 
 private:
@@ -76,4 +80,6 @@ private:
     /// @brief Context
     /// @see Context.h
     std::unique_ptr<IContext> m_context;
+
+    std::array<std::unique_ptr<IAction>, size_t(IMessage::Type::COUNT)> m_actions;
 };

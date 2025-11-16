@@ -9,22 +9,51 @@
 #include "std_includes.h"
 
 class IPrimitive;
-class ISelection;
 
-/// @brief Current context
+/// @brief Current editor context interface
 class IContext
 {
 public:
+    /// @brief Selection range structure
+    struct selection_t
+    {
+        size_t start = 0;
+        size_t end   = 0;
+    };
+
     IContext()          = default;
     virtual ~IContext() = default;
-    virtual const ISelection& get_selection() const;
-    virtual void set_selection(const ISelection&);
-    virtual const IPrimitive& get_primitive() const;
-    virtual void set_primitive(const IPrimitive&);
+
+    /// @brief Set selection range
+    virtual void set_selection(const selection_t& selection) = 0;
+
+    /// @brief Get selection range
+    virtual selection_t get_selection() const = 0;
+
+    /// @brief Get primitive pointer
+    virtual const IPrimitive* get_primitive() const = 0;
+
+    /// @brief Set primitive
+    virtual void set(const std::weak_ptr<const IPrimitive>& b) = 0;
+};
+
+/// @brief Editor context implementation
+class Context : public IContext
+{
+public:
+    Context();
+    void set_selection(const selection_t& selection) override;
+    selection_t get_selection() const override;
+    const IPrimitive* get_primitive() const override;
+    void set(const std::weak_ptr<const IPrimitive>& b) override;
+
+private:
+    selection_t m_selection;
+    std::weak_ptr<const IPrimitive> m_primitive;
 };
 
 /// @brief IPrimitive is a part of the document
-class IPrimitive
+class IPrimitive : public std::enable_shared_from_this<IPrimitive>
 {
 public:
     IPrimitive() = default;
@@ -51,24 +80,4 @@ public:
 
 private:
     std::string m_type;
-};
-
-/// @brief Selected part of the document
-class ISelection
-{
-public:
-    ISelection()          = default;
-    virtual ~ISelection() = default;
-};
-
-/// @brief Simple selection - start and end of selected part
-class SimpleSelection
-{
-public:
-    SimpleSelection() = default;
-    std::pair<size_t, size_t> get() const;
-    void set(const std::pair<size_t, size_t>&);
-
-private:
-    std::pair<size_t, size_t> m_selection;
 };
