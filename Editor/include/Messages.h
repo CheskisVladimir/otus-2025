@@ -9,28 +9,28 @@
 
 #include "std_includes.h"
 
+/// @brief Supported message types
+enum class MessageType
+{
+    create,         ///< Create new document
+    load_xml,       ///< Load from XML
+    load_json,      ///< Load from JSON
+    save_xml,       ///< Save to XML
+    save_json,      ///< Save to JSON
+    add_primitive,  ///< Add primitive
+    del_primitive,  ///< Delete primitive
+    COUNT           ///< Total count of types
+};
+
 /// @brief The message interface
 class IMessage
 {
 public:
-    /// @brief Supported message types
-    enum class Type
-    {
-        create,         ///< Create new document
-        load_xml,       ///< Load from XML
-        load_json,      ///< Load from JSON
-        save_xml,       ///< Save to XML
-        save_json,      ///< Save to JSON
-        add_primitive,  ///< Add primitive
-        del_primitive,  ///< Delete primitive
-        COUNT           ///< Total count of types
-    };
-
     IMessage()          = default;
     virtual ~IMessage() = default;
 
     /// @brief Get message type
-    virtual Type get_type() const = 0;
+    virtual MessageType get_type() const = 0;
 };
 
 /// @brief Message to be procesed
@@ -38,11 +38,11 @@ class Message : public IMessage
 {
 public:
     /// @brief Sets message type
-    Message(Type type) { m_type = type; }
+    Message(MessageType type) { m_type = type; }
 
     /// @brief Get message type
-    Type get_type() const override { return m_type; };
+    MessageType get_type() const override { return m_type; };
 
 private:
-    Type m_type = Type::COUNT;
+    MessageType m_type = MessageType::COUNT;
 };

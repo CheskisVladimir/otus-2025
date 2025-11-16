@@ -1,8 +1,8 @@
 @startuml
 
 class IContext<<interface>>{
-  + {abstract} get_selection() const : const ISelection&;
-  + {abstract} set_selection(const ISelection&): void;   
+  + {abstract} get_selection() const : const selection_t&;
+  + {abstract} set_selection(const selection_t&): void;   
   
   + {abstract} get_primitive() const :const IPrimitive&    
   + {abstract} set_primitive(const IPrimitive&) :void    
@@ -17,20 +17,17 @@ class CharPrimitive{
 class ShapePrimitive{
 } 
 
-class ISelection<<interface>>{} 
-class SimpleSelection{
-  -m_selection: std::pair<siz_t, sise_t>;
-  +get() const : std::pair<siz_t, sise_t>
-  set(const std::pair<siz_t, sise_t> &) : void
 
+class selection_t{
+  +m_start: size_t;
+  +m_end: size_t;
 } 
 
 IContext --> IPrimitive
-IContext --> ISelection
+IContext --> selection_t
 
 IPrimitive <|-- CharPrimitive
 IPrimitive <|-- ShapePrimitive
 
-ISelection <|-- SimpleSelection
 
 @enduml

@@ -9,14 +9,13 @@ class Controller #LightGreen {
   - m_document : unique_ptr<IDocument>
   - m_context : unique_ptr<EditContext>
   - m_view : shared_ptr<IDocument>
+  - m_actions: array of actions
 }
 
 class IView <<interface>> {
  
 }
-class IView <<interface>> {
- 
-}
+
 
 class IDocument <<interface>> {
  
@@ -30,6 +29,9 @@ class IAction <<interface>> {
  
 }
 
+class IActionFactory <<interface>> {
+ 
+}
 
 
 
@@ -38,9 +40,11 @@ IView ..> Controller : weak_ptr
 IController <|.. Controller
 Controller -> IDocument : unique_ptr
 Controller -> IContext : unique_ptr
-Controller ..> IAction : Maps the IMessage to an IAction 
-IView <|.. View
+Controller --> IAction : array of unique_ptr
 
+Controller ..> IActionFactory : init_actions
+
+IActionFactory ..> IAction : create_action
 'class AddPrimitiveAction {}
 'class RemovePrimitiveAction {}
 'class CompositeAction {}

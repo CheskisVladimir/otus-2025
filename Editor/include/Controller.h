@@ -93,5 +93,5 @@ private:
 
     /// @brief Actions
     /// @see Actions.h
-    std::array<std::unique_ptr<IAction>, size_t(IMessage::Type::COUNT)> m_actions;
+    std::array<std::unique_ptr<IAction>, size_t(MessageType::COUNT)> m_actions;
 };

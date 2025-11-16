@@ -14,7 +14,7 @@ int main(int, char **)
 	ActionFactory factory;
 	controller.init_actions(factory);
 	auto &view = controller.get_view();
-	Message create(IMessage::Type::create);
+	Message create(MessageType::create);
 	view.notify_сontroller(create);
 
 	return 0;
@@ -56,7 +56,7 @@ void Controller::init_actions(const IActionFactory &factory)
 {
 	for (size_t msg_pos = 0; msg_pos < m_actions.size(); msg_pos++)
 	{
-		auto mgs_type = static_cast<IMessage::Type>(msg_pos);
+		auto mgs_type = static_cast<MessageType>(msg_pos);
 		m_actions[msg_pos] = std::move(factory.create(mgs_type));
 	}
 }
@@ -86,11 +86,11 @@ void View::notify_сontroller(const IMessage &msg) const
 	}
 }
 
-std::unique_ptr<IAction> ActionFactory::create(IMessage::Type msg_type) const
+std::unique_ptr<IAction> ActionFactory::create(MessageType msg_type) const
 {
 	switch (msg_type)
 	{
-	case IMessage::Type::create:
+	case MessageType::create:
 		return std::make_unique<CreateDocumentAction>();
 		// ...
 	default:

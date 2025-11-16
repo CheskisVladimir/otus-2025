@@ -15,7 +15,7 @@ public:
     virtual ~IActionFactory() = default;
 
     /// @brief Create action by message type
-    virtual std::unique_ptr<IAction> create(IMessage::Type msg_type) const = 0;
+    virtual std::unique_ptr<IAction> create(MessageType msg_type) const = 0;
 };
 
 /// @brief Creates editor actions (save/load, add/remove primitive, etc)
@@ -24,5 +24,5 @@ class ActionFactory : public IActionFactory
 public:
     ActionFactory() = default;
     /// @brief Create action by message type
-    std::unique_ptr<IAction> create(IMessage::Type msg_type) const override;
+    std::unique_ptr<IAction> create(MessageType msg_type) const override;
 };

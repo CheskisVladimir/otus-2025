@@ -10,7 +10,11 @@ class IView<<interface>> #LightGreen {
   + {abstract} notify_сontroller(const IMessage& ) const :void 
 }
 class IDocument <<interface>> #LightGreen {}
-class IMessage<<interface>>{} 
+class IMessage<<interface>>{
+} 
+
+enum MessageType{}
+
 class IContext <<interface>>{}
 
 class IAction<<interface>>
@@ -18,6 +22,9 @@ class IAction<<interface>>
    + execute (const IMessage&, IContext&, IDocument&) : void
 } 
 
+class IActionFactory <<interface>>{
+  + create(MessageType): unique_ptr<IAction>
+}
 
 IMessage <.. IAction : Input
 IAction <..> IContext : Input/Output
@@ -26,7 +33,10 @@ IAction <..> IDocument : Input/Output
 IView ..> IMessage : Notify Controller
 IView ..> IDocument : Show
 IController ..> IMessage : Process
-IController ..> IDocument : Containes
-
-
+IController-> IDocument : Containes
+IMessage-->MessageType
+IActionFactory..>IAction : creates
+IActionFactory..>MessageType : input
+IController..>IActionFactory : init_actions
+IController->IView
 @enduml
