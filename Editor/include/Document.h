@@ -4,6 +4,7 @@
  * @date 2025-10-25
  * @version 1.0
  */
+
 #pragma once
 
 #include "std_includes.h"
@@ -16,6 +17,7 @@ public:
     virtual ~IDocument() = default;
 };
 
+/// @brief Simple IDocument implementation
 class Document : public IDocument
 {
 public:

@@ -42,9 +42,16 @@ class Context : public IContext
 {
 public:
     Context();
+    /// @brief Set selection range
     void set_selection(const selection_t& selection) override;
+
+    /// @Set selection range
     selection_t get_selection() const override;
+
+    /// @brief Get primitive pointer
     const IPrimitive* get_primitive() const override;
+
+    /// @brief Set primitive pointer
     void set(const std::weak_ptr<const IPrimitive>& b) override;
 
 private:
