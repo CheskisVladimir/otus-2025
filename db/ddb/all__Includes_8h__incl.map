@@ -1,0 +1,35 @@
+<map id="include/all_Includes.h" name="include/all_Includes.h">
+<area shape="rect" id="Node000001" title="Containes all include files (all code should be in one file)" alt="" coords="255,5,417,31"/>
+<area shape="rect" id="Node000002" href="$dd/d9d/ActionFactoty_8h.html" title="Creates editor actions (save/load, add/remove primitive, etc)" alt="" coords="5,79,125,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="293,33,123,78,122,73,292,28"/>
+<area shape="rect" id="Node000003" href="$d1/dd0/Messages_8h.html" title="It containes the messages to be procesed." alt="" coords="103,152,201,177"/>
+<area shape="poly" id="edge18_Node000001_Node000003" title=" " alt="" coords="281,33,233,51,210,64,190,80,171,109,160,140,155,138,166,107,186,77,207,60,231,46,279,28"/>
+<area shape="rect" id="Node000009" href="$de/db3/Actions_8h.html" title="Edit document actions (save/load, add/remove primitive, etc)" alt="" coords="276,152,359,177"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="337,31,323,139,318,138,332,31"/>
+<area shape="rect" id="Node000010" href="$d1/d18/Context_8h.html" title="Current context it includes the selection in the document, primitive to be inserted,..." alt="" coords="383,152,468,177"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="346,30,413,139,409,142,341,33"/>
+<area shape="rect" id="Node000011" href="$de/d4a/Controller_8h.html" title="It containes the Controller, second class in from MVC model." alt="" coords="201,79,298,104"/>
+<area shape="poly" id="edge13_Node000001_Node000011" title=" " alt="" coords="324,33,276,72,272,68,320,29"/>
+<area shape="rect" id="Node000012" href="$df/def/Document_8h.html" title="Model in MVC model." alt="" coords="492,152,593,177"/>
+<area shape="poly" id="edge16_Node000001_Node000012" title=" " alt="" coords="354,29,516,142,513,146,351,33"/>
+<area shape="rect" id="Node000013" href="$d4/d57/View_8h.html" title="View in MVC model." alt="" coords="567,79,633,104"/>
+<area shape="poly" id="edge19_Node000001_Node000013" title=" " alt="" coords="379,28,555,75,553,80,378,33"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="81,102,129,141,126,145,78,106"/>
+<area shape="rect" id="Node000004" href="$d9/dff/std__includes_8h.html" title="All std include files, used in this application." alt="" coords="260,225,375,251"/>
+<area shape="poly" id="edge8_Node000002_Node000004" title=" " alt="" coords="68,104,73,140,81,159,93,175,127,200,166,217,207,228,246,233,246,238,206,233,164,222,124,205,89,179,76,161,68,141,63,105"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="180,175,279,217,277,222,178,180"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="138,299,209,324"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="295,253,210,295,208,290,293,248"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="233,299,311,324"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="312,252,289,289,284,286,308,250"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="335,299,393,324"/>
+<area shape="poly" id="edge6_Node000004_Node000007" title=" " alt="" coords="327,250,351,286,347,289,323,252"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="418,299,481,324"/>
+<area shape="poly" id="edge7_Node000004_Node000008" title=" " alt="" coords="340,248,417,290,415,294,337,253"/>
+<area shape="poly" id="edge10_Node000009_Node000004" title=" " alt="" coords="320,178,320,212,315,212,315,178"/>
+<area shape="poly" id="edge12_Node000010_Node000004" title=" " alt="" coords="409,180,348,220,345,215,407,175"/>
+<area shape="poly" id="edge14_Node000011_Node000003" title=" " alt="" coords="235,106,181,146,178,141,232,102"/>
+<area shape="poly" id="edge15_Node000011_Node000004" title=" " alt="" coords="252,104,255,138,266,176,279,196,295,214,291,217,275,200,262,178,250,139,247,104"/>
+<area shape="poly" id="edge17_Node000012_Node000004" title=" " alt="" coords="507,180,368,224,366,219,506,175"/>
+<area shape="poly" id="edge20_Node000013_Node000004" title=" " alt="" coords="608,103,617,139,616,160,607,179,593,191,572,201,516,217,451,228,389,235,388,229,450,223,515,212,570,196,590,187,603,176,611,159,612,140,603,105"/>
+</map>

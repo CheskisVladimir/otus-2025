@@ -1,0 +1,9 @@
+<map id="ILoadAction" name="ILoadAction">
+<area shape="rect" id="Node000001" title="Base class for the loading actions." alt="" coords="90,79,189,104"/>
+<area shape="rect" id="Node000003" href="$dc/d82/classLoadJsonAction.html" title="Loads a document from the json file." alt="" coords="5,152,127,177"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="119,116,80,154,76,150,116,112"/>
+<area shape="rect" id="Node000004" href="$da/d72/classLoadXMLAction.html" title="Loads a document from the XML file." alt="" coords="151,152,274,177"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="163,112,203,150,199,154,159,116"/>
+<area shape="rect" id="Node000002" href="$df/dc6/classIAction.html" title="Interface for all edit document actions (save/load, add/remove primitive, etc)" alt="" coords="106,5,173,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="142,44,142,79,137,79,137,44"/>
+</map>

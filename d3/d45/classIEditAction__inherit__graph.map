@@ -1,0 +1,9 @@
+<map id="IEditAction" name="IEditAction">
+<area shape="rect" id="Node000001" title="Base class for the edit document actions." alt="" coords="117,79,209,104"/>
+<area shape="rect" id="Node000003" href="$dc/ded/classAddPrimitiveAction.html" title="Takes from IContext current selection and IPrimitive, adds the primitive at the selected position." alt="" coords="5,152,152,177"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="140,115,94,154,91,150,137,111"/>
+<area shape="rect" id="Node000004" href="$de/d1c/classDelPrimitiveAction.html" title="Takes from IContext current selection, removes the primitive at the selected position." alt="" coords="176,152,320,177"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="188,110,236,150,232,154,185,115"/>
+<area shape="rect" id="Node000002" href="$df/dc6/classIAction.html" title="Interface for all edit document actions (save/load, add/remove primitive, etc)" alt="" coords="129,5,196,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="165,44,165,79,160,79,160,44"/>
+</map>

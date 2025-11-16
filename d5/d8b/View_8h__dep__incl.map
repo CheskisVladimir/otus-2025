@@ -1,0 +1,7 @@
+<map id="include/View.h" name="include/View.h">
+<area shape="rect" id="Node000001" title="View in MVC model." alt="" coords="29,5,145,31"/>
+<area shape="rect" id="Node000002" href="$d7/d1f/all__Includes_8h.html" title="Containes all include files (all code should be in one file)" alt="" coords="5,79,168,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="89,44,89,79,84,79,84,44"/>
+<area shape="rect" id="Node000003" href="$df/d0a/main_8cpp.html" title="Function implementations." alt="" coords="45,152,128,177"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="89,118,89,152,84,152,84,118"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="IEditAction" name="IEditAction">
+<area shape="rect" id="Node000001" title="Base class for the edit document actions." alt="" coords="5,79,97,104"/>
+<area shape="rect" id="Node000002" href="$df/dc6/classIAction.html" title="Interface for all edit document actions (save/load, add/remove primitive, etc)" alt="" coords="18,5,85,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="54,44,54,79,49,79,49,44"/>
+</map>

@@ -1,0 +1,23 @@
+<map id="IAction" name="IAction">
+<area shape="rect" id="Node000001" title="Interface for all edit document actions (save/load, add/remove primitive, etc)" alt="" coords="5,80,72,105"/>
+<area shape="rect" id="Node000002" href="$d5/da2/classCreateDocumentAction.html" title="Creates new document." alt="" coords="120,5,293,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="67,70,119,40,150,28,152,33,121,44,69,74"/>
+<area shape="rect" id="Node000003" href="$d9/dee/classIEditAction.html" title="Base class for the edit document actions." alt="" coords="161,55,253,80"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="86,83,160,72,161,77,86,88"/>
+<area shape="rect" id="Node000006" href="$db/d3e/classILoadAction.html" title="Base class for the loading actions." alt="" coords="157,104,256,129"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="86,97,157,107,156,112,86,102"/>
+<area shape="rect" id="Node000009" href="$dc/d62/classISaveAction.html" title="Base class for the save document actions." alt="" coords="157,203,256,228"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="70,112,189,200,186,204,67,116"/>
+<area shape="rect" id="Node000004" href="$dc/ded/classAddPrimitiveAction.html" title="Takes from IContext current selection and IPrimitive, adds the primitive at the selected position." alt="" coords="341,5,488,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="266,51,360,28,361,33,267,56"/>
+<area shape="rect" id="Node000005" href="$de/d1c/classDelPrimitiveAction.html" title="Takes from IContext current selection, removes the primitive at the selected position." alt="" coords="343,55,487,80"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="267,65,343,65,343,70,267,70"/>
+<area shape="rect" id="Node000007" href="$dc/d82/classLoadJsonAction.html" title="Loads a document from the json file." alt="" coords="354,104,475,129"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="270,114,354,114,354,119,270,119"/>
+<area shape="rect" id="Node000008" href="$da/d72/classLoadXMLAction.html" title="Loads a document from the XML file." alt="" coords="353,153,476,179"/>
+<area shape="poly" id="edge7_Node000006_Node000008" title=" " alt="" coords="270,129,361,151,360,156,269,134"/>
+<area shape="rect" id="Node000010" href="$d7/d82/classSaveJsonAction.html" title="Saves a document to the json file." alt="" coords="353,203,476,228"/>
+<area shape="poly" id="edge9_Node000009_Node000010" title=" " alt="" coords="270,213,353,213,353,218,270,218"/>
+<area shape="rect" id="Node000011" href="$d7/db8/classSaveXMLAction.html" title="Saves a document to the XML file." alt="" coords="353,252,477,277"/>
+<area shape="poly" id="edge10_Node000009_Node000011" title=" " alt="" coords="270,228,361,249,360,255,269,233"/>
+</map>
