@@ -14,9 +14,26 @@ int main(int, char **)
 	ActionFactory factory;
 	controller.init_actions(factory);
 	auto &view = controller.get_view();
+	view.show(controller.get_document());
+
 	Message create(MessageType::create);
 	view.notify_сontroller(create);
 
+	Message load(MessageType::load_xml);
+	view.notify_сontroller(load);
+
+	Message save(MessageType::save_json);
+	view.notify_сontroller(save);
+
+	auto ch = std::make_shared<CharPrimitive>('A');
+	controller.get_context().set_primitive(ch->weak_from_this());
+	controller.get_context().set_selection({0, 1});
+	Message add(MessageType::add_primitive);
+	view.notify_сontroller(add);
+
+	controller.get_context().set_selection({20, 21});
+	Message del(MessageType::del_primitive);
+	view.notify_сontroller(del);
 	return 0;
 }
 
@@ -60,6 +77,9 @@ void Controller::init_actions(const IActionFactory &factory)
 		m_actions[msg_pos] = std::move(factory.create(mgs_type));
 	}
 }
+
+IContext &Controller::get_context() { return *m_context; }
+const IContext &Controller::get_context() const { return *m_context; }
 
 void Controller::refresh_view() const { m_view->show(*m_document); }
 
@@ -183,7 +203,7 @@ const IPrimitive *Context::get_primitive() const
 	return nullptr;
 }
 
-void Context::set(const std::weak_ptr<const IPrimitive> &b)
+void Context::set_primitive(const std::weak_ptr<const IPrimitive> &b)
 {
 	m_primitive = b;
 }

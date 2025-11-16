@@ -34,7 +34,7 @@ public:
     virtual const IPrimitive* get_primitive() const = 0;
 
     /// @brief Set primitive
-    virtual void set(const std::weak_ptr<const IPrimitive>& b) = 0;
+    virtual void set_primitive(const std::weak_ptr<const IPrimitive>& b) = 0;
 };
 
 /// @brief Editor context implementation
@@ -52,7 +52,7 @@ public:
     const IPrimitive* get_primitive() const override;
 
     /// @brief Set primitive pointer
-    void set(const std::weak_ptr<const IPrimitive>& b) override;
+    void set_primitive(const std::weak_ptr<const IPrimitive>& b) override;
 
 private:
     selection_t m_selection;

@@ -36,6 +36,10 @@ public:
     /// @brief Returns Vew
     virtual IView& get_view()             = 0;
     virtual const IView& get_view() const = 0;
+
+    /// @brief Returns Context
+    virtual IContext& get_context()             = 0;
+    virtual const IContext& get_context() const = 0;
 };
 
 /// @brief Controller in MVC model
@@ -73,6 +77,10 @@ public:
     /// @brief Returns Vew
     IView& get_view() override;
     const IView& get_view() const override;
+
+    /// @brief Returns Context
+    IContext& get_context() override;
+    const IContext& get_context() const override;
 
 protected:
     /// @brief Finds the action, processed this messages
